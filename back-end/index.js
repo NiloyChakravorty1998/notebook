@@ -3,6 +3,7 @@ const bodyParser = require('body-parser')
 const connection = require('./config/dbConfig')
 
 connection.connectToMongo();
+
 const app = express();
 
 app.use(bodyParser.json());
