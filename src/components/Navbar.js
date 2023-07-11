@@ -34,6 +34,11 @@ const Navbar = () => {
                                         About
                                     </Link>
                                 </li>
+                                <li className="nav-item">
+                                    <Link className="nav-link active" aria-current="page" to="/addnote">
+                                        New Note
+                                    </Link>
+                                </li>
                             </ul>
                             <div className="d-flex">
                                 <Link className="btn btn-outline-primary me-2" to="/signup" style={{ backgroundColor: 'green', color: 'white' }}>

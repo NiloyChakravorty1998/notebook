@@ -5,6 +5,7 @@ import Home from './components/Home';
 import About from './components/About';
 import Signup from './auth-components/Signup';
 import Signin from './auth-components/Signin';
+import AddNote from './notes-components/AddNote';
 
 function App() {
   return (
@@ -16,6 +17,7 @@ function App() {
           <Route exact path='/about' element={<About />} />
           <Route exact path='/signup' element={<Signup />} />
           <Route exact path='/signin' element={<Signin />} />
+          <Route exact path='/addnote' element={<AddNote />} />
         </Routes>
       </Router>
     </div>
