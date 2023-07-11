@@ -35,6 +35,14 @@ const Navbar = () => {
                                     </Link>
                                 </li>
                             </ul>
+                            <div className="d-flex">
+                                <Link className="btn btn-outline-primary me-2" to="/signup" style={{ backgroundColor: 'green', color: 'white' }}>
+                                    Sign Up
+                                </Link>
+                                <Link className="btn btn-outline-primary" to="/signin"  style={{ backgroundColor: 'blue', color: 'white' }}>
+                                    Sign In
+                                </Link>
+                            </div>
                         </div>
                     </div>
                 </nav>
