@@ -9,7 +9,7 @@ dotenv.config();
 
 
 module.exports = {
-    //Create new user
+    //Login user
     loginUser: async (req, res, next) => {
         const errors = validationResult(req); // check the validation for fields 
         //we mentioned in routes

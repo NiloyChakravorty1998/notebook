@@ -28,7 +28,7 @@ const AddNote = () => {
             }
           }).then((res) => {
             res.json().then((data) => {
-              localStorage.setItem("token", data.authtoken)
+              
             })
           })
     }

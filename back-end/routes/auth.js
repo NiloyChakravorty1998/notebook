@@ -5,6 +5,7 @@ const { createUser } = require('../controllers/user-controller/createUser')
 const { loginUser } = require('../controllers/user-controller/loginUser')
 const { getUser } = require('../controllers/user-controller/getUser');
 const {fetchUser} = require('../middleware/fetchUser');
+const {stateOfUser} = require('../controllers/user-controller/stateOfUser');
 
 //signup route
 router.post('/createuser', [
@@ -22,4 +23,9 @@ router.post('/loginuser', [
     loginUser);
 //Get user route, login required. Token required
 router.get('/getuser',fetchUser, getUser)
+
+//check login status
+router.get('/me', fetchUser, stateOfUser)
 module.exports = router;
+
+
