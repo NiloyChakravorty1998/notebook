@@ -16,7 +16,7 @@ const AddNote = () => {
     }
 
     const handleAddNote = () => {
-        console.log("my token is " +localStorage.getItem("token"))
+        
         fetch('http://localhost:5000/api/notes/addnote', {
             method: "POST", body:JSON.stringify({
               title,
