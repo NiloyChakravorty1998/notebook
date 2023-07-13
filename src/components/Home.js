@@ -27,11 +27,13 @@ const Home = () => {
     )
   }
 
-  return(
-  <center><h3>
-    Welcome to inoteBook, signin to check out your notes.
-  </h3>
-  </center>
+  return (
+    <div className="d-flex justify-content-center align-items-center" style={{ minHeight: 'calc(100vh - 56px)', backgroundColor: '#eeeeee' }}>
+      <center>
+        <h3>Welcome to inoteBook, sign in to check out your notes.</h3>
+      </center>
+    </div>
+
   )
 
 

@@ -12,7 +12,7 @@ module.exports = {
         const note = new Notes({
             title,
             description,
-            tag,
+            tag: tag.toUpperCase(),
             user: req.user.id
         });
         try {

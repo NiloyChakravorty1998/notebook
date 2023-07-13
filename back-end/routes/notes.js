@@ -6,10 +6,12 @@ const {createNotes} = require('../controllers/notes-controller/createNotes')
 const {fetchAllNotes} = require('../controllers/notes-controller/fetchAllNotes')
 const {updateNotes} = require('../controllers/notes-controller/updateNotes')
 const {deleteNotes} = require('../controllers/notes-controller/deleteNotes')
-
+const {getNoteById} = require('../controllers/notes-controller/getNoteById')
 
 //Get all notes of an user 
 router.get('/fetchallnotes',fetchUser, fetchAllNotes);
+//Get note by Id
+router.get('/getnote/:id',fetchUser, getNoteById);
 //Add new notes for an user 
 router.post('/addnote',fetchUser,[
     check('title').isLength({ min: 3 }),

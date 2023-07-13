@@ -11,11 +11,11 @@ const Notes = () => {
             }
           }).then((res) => {
             res.json().then((data) => {
-                console.log(notes)
+                
               setNotes(data.notes)
             })
           })
-    })
+    },[])
 
   return (
     <div className="container my-3">

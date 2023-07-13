@@ -23,7 +23,7 @@ module.exports = {
 
         note.title = title;
         note.description = description;
-        note.tag = tag;
+        note.tag = tag.toUpperCase();
         try {
             await Notes.findByIdAndUpdate(noteId, { $set: note }, { new: true });
         } catch (error) {
