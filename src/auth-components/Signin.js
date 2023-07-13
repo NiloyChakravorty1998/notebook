@@ -26,7 +26,8 @@ const Signin = () => {
     }).then((res) => {
       res.json().then((data) => {
         localStorage.setItem("token", data.authtoken)
-        console.log(data.authtoken);
+        console.log(data.authtoken)
+        window.location = "/"
       })
     })
   };
