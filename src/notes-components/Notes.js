@@ -27,7 +27,7 @@ const Notes = () => {
                 <NoteItem
                   title={element.title ? element.title : ""}
                   description={element.description ? element.description : ""}
-                  tag={element.tag}
+                  tag={element.tag} id={element._id}
                 />
               </div>
             ))

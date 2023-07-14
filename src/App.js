@@ -6,6 +6,7 @@ import About from './components/About';
 import Signup from './auth-components/Signup';
 import Signin from './auth-components/Signin';
 import AddNote from './notes-components/AddNote';
+import NoteById from './notes-components/NoteById';
 
 function App() {
   return (
@@ -18,6 +19,7 @@ function App() {
           <Route exact path='/signup' element={<Signup />} />
           <Route exact path='/signin' element={<Signin />} />
           <Route exact path='/addnote' element={<AddNote />} />
+          <Route exact path='/note/:noteId' element={<NoteById/>} />
         </Routes>
       </Router>
     </div>

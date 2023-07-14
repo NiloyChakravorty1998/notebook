@@ -2,7 +2,8 @@ import React from 'react';
 
 const NoteItem = (props) => {
   const handleNote = () => {
-    window.location.href = '/';
+    console.log(props.id)
+    window.location.href = `/note/${props.id}`;
   };
 
   return (
