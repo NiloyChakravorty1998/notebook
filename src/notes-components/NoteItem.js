@@ -17,6 +17,7 @@ const NoteItem = (props) => {
             </center>
             <br></br>
           <p className="card-text" style={{ marginBottom: '10px' }}><h6 style={{fontSize: '15px',fontWeight: 'bold'}}>Description : </h6>{props.description}...</p>
+          
           <center>
           <h6 className="card-text" style={{ color: '#154c79', marginBottom: '10px',fontWeight: 'bold' }}>{props.tag}</h6>
           </center>
