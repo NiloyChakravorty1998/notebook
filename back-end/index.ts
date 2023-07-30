@@ -1,23 +1,27 @@
-const express = require('express')
-const bodyParser = require('body-parser')
-const connection = require('./config/dbConfig')
-
-connection.connectToMongo();
+import express from 'express';
+import bodyParser from 'body-parser';
+import { connectToMongo } from './config/dbConfig';
+import authRoutes from './routes/auth';
+import notesRoutes from './routes/notes';
+import cors from 'cors';
 
 const app = express();
-app.use(function(req, res, next) {
-    res.setHeader('Access-Control-Allow-Origin', 'http://localhost:3000');
-    res.setHeader('Access-Control-Allow-Methods', 'GET, POST, PUT, DELETE, PATCH');
-    res.setHeader('Access-Control-Allow-Headers', ['Content-Type', 'auth-token']);
-    next();
-  });
+
+// Connect to MongoDB
+connectToMongo();
+
+// CORS handling
+app.use(cors());
+app.options('*', cors());
 
 app.use(bodyParser.json());
-//Routes
-app.use('/api/auth', require('./routes/auth'))
-app.use('/api/notes', require('./routes/notes'))
 
-app.listen(process.env.APP_PORT,() => {
-    console.log('Application has been started >>')
-})
+// Use the imported routes
+app.use('/api/auth', authRoutes);
+app.use('/api/notes', notesRoutes);
 
+const port = process.env.APP_PORT || 3000;
+
+app.listen(port, () => {
+  console.log(`Application has been started on port ${port}`);
+});
