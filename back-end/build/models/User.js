@@ -1,5 +1,12 @@
-const mongoose = require('mongoose');
-const Schema = mongoose.Schema;
+"use strict";
+var __importDefault = (this && this.__importDefault) || function (mod) {
+    return (mod && mod.__esModule) ? mod : { "default": mod };
+};
+Object.defineProperty(exports, "__esModule", { value: true });
+// Import Mongoose
+const mongoose_1 = __importDefault(require("mongoose"));
+const { Schema } = mongoose_1.default;
+// Create the User Schema
 const UserSchema = new Schema({
     name: {
         type: String,
@@ -19,4 +26,5 @@ const UserSchema = new Schema({
         default: Date.now
     }
 });
-module.exports = mongoose.model('user', UserSchema);
+// Export the User Model
+exports.default = mongoose_1.default.model('user', UserSchema);

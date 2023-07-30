@@ -2,9 +2,9 @@
 import { validationResult } from 'express-validator';
 import HttpError from '../../models/HttpError';
 import Notes from '../../models/Notes';
-
+import { Request, Response,NextFunction } from 'express';
 // Exporting the createNotes function directly
-export const createNotes = async (req, res, next) => {
+export const createNotes = async (req : Request, res : Response, next : NextFunction) => {
   const errors = validationResult(req); // check the validation for fields 
   //we mentioned in routes
   if (!errors.isEmpty()) {

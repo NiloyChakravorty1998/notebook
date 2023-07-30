@@ -1,8 +1,15 @@
-const mongoose = require('mongoose');
-const Schema = mongoose.Schema;
+"use strict";
+var __importDefault = (this && this.__importDefault) || function (mod) {
+    return (mod && mod.__esModule) ? mod : { "default": mod };
+};
+Object.defineProperty(exports, "__esModule", { value: true });
+// Import Mongoose
+const mongoose_1 = __importDefault(require("mongoose"));
+const { Schema } = mongoose_1.default;
+// Create the Notes Schema
 const NotesSchema = new Schema({
     user: {
-        type: mongoose.Schema.Types.ObjectId,
+        type: mongoose_1.default.Schema.Types.ObjectId,
         ref: 'user'
     },
     title: {
@@ -15,11 +22,12 @@ const NotesSchema = new Schema({
     },
     tag: {
         type: String,
-        default: "General"
+        default: 'General'
     },
     date: {
         type: Date,
         default: Date.now
     }
 });
-module.exports = mongoose.model('notes', NotesSchema);
+// Export the Notes Model
+exports.default = mongoose_1.default.model('notes', NotesSchema);
