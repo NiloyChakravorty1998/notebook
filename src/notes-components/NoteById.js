@@ -20,7 +20,7 @@ const NoteById = () => {
       .catch((error) => {
         console.log(error);
       });
-  }, []);
+  });
 
   const handleDelete = () => {
     fetch(`http://localhost:5000/api/notes/deletenote/${noteId}`, {
