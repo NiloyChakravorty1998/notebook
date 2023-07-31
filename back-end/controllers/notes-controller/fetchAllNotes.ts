@@ -1,10 +1,10 @@
 // import statements using ES6 syntax
 import HttpError from '../../models/HttpError';
 import Notes from '../../models/Notes';
-
-export const fetchAllNotes = async (req, res, next) => {
+import { Request, Response, NextFunction } from 'express';
+export const fetchAllNotes = async (req : Request, res : Response, next : NextFunction) => {
   const notes = await Notes.find({
-    user: req.user.id
+    user: req.headers["userId"]
   });
   if (!notes) {
     return next(new HttpError('Notes not found', 404));

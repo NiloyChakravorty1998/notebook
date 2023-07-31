@@ -29,7 +29,7 @@ const createNotes = (req, res, next) => __awaiter(void 0, void 0, void 0, functi
         title,
         description,
         tag: tag.toUpperCase(),
-        user: req.user.id
+        user: req.headers["userId"]
     });
     try {
         const savedNote = yield note.save();

@@ -15,7 +15,7 @@ export const createNotes = async (req : Request, res : Response, next : NextFunc
     title,
     description,
     tag: tag.toUpperCase(),
-    user: req.user.id
+    user: req.headers["userId"]
   });
   try {
     const savedNote = await note.save();

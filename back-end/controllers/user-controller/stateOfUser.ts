@@ -1,12 +1,12 @@
 // import statements using ES6 syntax
 import User from '../../models/User';
 import HttpError from '../../models/HttpError';
-
-export const stateOfUser = async (req, res, next) => {
-  console.log(req.user.id);
+import { Request, Response, NextFunction } from 'express';
+export const stateOfUser = async (req : Request, res : Response, next : NextFunction) => {
+  console.log(req.headers["userId"]);
 
   //check if there exists a user with the entered email address
-  let user = await User.findById(req.user.id);
+  let user = await User.findById(req.headers["userId"]);
   console.log(user);
 
   if (!user) {

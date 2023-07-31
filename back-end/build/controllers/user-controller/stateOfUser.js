@@ -17,9 +17,9 @@ exports.stateOfUser = void 0;
 const User_1 = __importDefault(require("../../models/User"));
 const HttpError_1 = __importDefault(require("../../models/HttpError"));
 const stateOfUser = (req, res, next) => __awaiter(void 0, void 0, void 0, function* () {
-    console.log(req.user.id);
+    console.log(req.headers["userId"]);
     //check if there exists a user with the entered email address
-    let user = yield User_1.default.findById(req.user.id);
+    let user = yield User_1.default.findById(req.headers["userId"]);
     console.log(user);
     if (!user) {
         return next(new HttpError_1.default(`Invalid token`, 400));

@@ -32,7 +32,7 @@ const updateNotes = (req, res, next) => __awaiter(void 0, void 0, void 0, functi
     catch (error) {
         return next(new HttpError_1.default('Could not find note with that id', 404));
     }
-    if (!note || note.user.toString() !== req.user.id) {
+    if (!note || note.user.toString() !== req.headers["userId"]) {
         return next(new HttpError_1.default('Could not find note with that id', 404));
     }
     note.title = title;

@@ -2,8 +2,8 @@
 import { validationResult } from 'express-validator';
 import HttpError from '../../models/HttpError';
 import Notes from '../../models/Notes';
-
-export const updateNotes = async (req, res, next) => {
+import { Request, Response, NextFunction } from 'express';
+export const updateNotes = async (req : Request, res : Response, next : NextFunction) => {
   const errors = validationResult(req);
 
   // check the validation for fields we mentioned in routes and check that user has passed a proper note id
@@ -21,7 +21,7 @@ export const updateNotes = async (req, res, next) => {
     return next(new HttpError('Could not find note with that id', 404));
   }
 
-  if (!note || note.user.toString() !== req.user.id) {
+  if (!note || note.user!.toString() !== req.headers["userId"]) {
     return next(new HttpError('Could not find note with that id', 404));
   }
 

@@ -5,10 +5,10 @@ import { genSalt, hash } from 'bcrypt';
 import User from '../../models/User';
 import HttpError from '../../models/HttpError';
 import jwt from 'jsonwebtoken';
-
+import { Request, Response, NextFunction } from 'express';
 dotenv.config();
 
-export const createUser = async (req, res, next) => {
+export const createUser = async (req :Request, res : Response, next : NextFunction) => {
   const errors = validationResult(req);
 
   // check the validation for fields we mentioned in routes
@@ -48,7 +48,7 @@ export const createUser = async (req, res, next) => {
       id: newUser.id
     }
   };
-  const authtoken = jwt.sign(data, process.env.JWT_KEY);
+  const authtoken = jwt.sign(data, process.env.JWT_KEY!);
 
   res.status(201).json({
     message: "Welcome",

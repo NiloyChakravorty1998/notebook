@@ -1,13 +1,13 @@
 // import statements using ES6 syntax
 import User from '../../models/User';
 import HttpError from '../../models/HttpError';
-
-export const getUser = async (req, res, next) => {
-  if (!req.user) {
+import { Request, Response, NextFunction } from 'express';
+export const getUser = async (req : Request, res : Response, next : NextFunction) => {
+  if (!req.headers["userId"]) {
     return next(new HttpError('Please authenticate using a valid token', 401));
   }
 
-  const userId = req.user.id;
+  const userId = req.headers["userId"];
 
   //Get user info
   const user = await User.findById(userId).select('-password');

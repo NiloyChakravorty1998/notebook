@@ -18,7 +18,7 @@ const HttpError_1 = __importDefault(require("../../models/HttpError"));
 const Notes_1 = __importDefault(require("../../models/Notes"));
 const fetchAllNotes = (req, res, next) => __awaiter(void 0, void 0, void 0, function* () {
     const notes = yield Notes_1.default.find({
-        user: req.user.id
+        user: req.headers["userId"]
     });
     if (!notes) {
         return next(new HttpError_1.default('Notes not found', 404));

@@ -27,7 +27,7 @@ const deleteNotes = (req, res, next) => __awaiter(void 0, void 0, void 0, functi
         return next(new HttpError_1.default('Could not find note with that id', 404));
     }
     //if notes exist with that id check the user id to see it belongs to them
-    if (!note || note.user.toString() !== req.user.id) {
+    if (!note || note.user.toString() !== req.headers["userId"]) {
         return next(new HttpError_1.default('Could not find note with that id', 404));
     }
     //delete the note

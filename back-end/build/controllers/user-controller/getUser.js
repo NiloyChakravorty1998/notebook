@@ -17,10 +17,10 @@ exports.getUser = void 0;
 const User_1 = __importDefault(require("../../models/User"));
 const HttpError_1 = __importDefault(require("../../models/HttpError"));
 const getUser = (req, res, next) => __awaiter(void 0, void 0, void 0, function* () {
-    if (!req.user) {
+    if (!req.headers["userId"]) {
         return next(new HttpError_1.default('Please authenticate using a valid token', 401));
     }
-    const userId = req.user.id;
+    const userId = req.headers["userId"];
     //Get user info
     const user = yield User_1.default.findById(userId).select('-password');
     if (!user) {

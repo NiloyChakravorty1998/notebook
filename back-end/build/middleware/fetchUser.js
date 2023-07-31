@@ -17,7 +17,7 @@ const fetchUser = (req, res, next) => {
     }
     try {
         const data = jsonwebtoken_1.default.verify(token, process.env.JWT_KEY);
-        req.user = data.user;
+        req.headers["userId"] = data.user;
         next();
     }
     catch (error) {

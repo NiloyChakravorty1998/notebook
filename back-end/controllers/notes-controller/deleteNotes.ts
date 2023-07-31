@@ -1,8 +1,8 @@
 // import statements using ES6 syntax
 import HttpError from '../../models/HttpError';
 import Notes from '../../models/Notes';
-
-export const deleteNotes = async (req, res, next) => {
+import { Request, Response, NextFunction } from 'express';
+export const deleteNotes = async (req : Request, res : Response, next : NextFunction) => {
   const noteId = req.params.id;
   //check if notes exist with that id
   let note;
@@ -12,7 +12,7 @@ export const deleteNotes = async (req, res, next) => {
     return next(new HttpError('Could not find note with that id', 404));
   }
   //if notes exist with that id check the user id to see it belongs to them
-  if (!note || note.user.toString() !== req.user.id) {
+  if (!note || note.user!.toString() !== req.headers["userId"]) {
     return next(new HttpError('Could not find note with that id', 404));
   }
   //delete the note
