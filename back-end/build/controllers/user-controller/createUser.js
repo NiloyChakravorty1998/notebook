@@ -49,12 +49,8 @@ const createUser = (req, res, next) => __awaiter(void 0, void 0, void 0, functio
         return next(new HttpError_1.default('Error creating new user', 500));
     }
     //send jwt token to user after they have signed up
-    const data = {
-        user: {
-            id: newUser.id
-        }
-    };
-    const authtoken = jsonwebtoken_1.default.sign(data, process.env.JWT_KEY);
+    const authtoken = jsonwebtoken_1.default.sign({ id: newUser.id }, process.env.JWT_KEY);
+    console.log(authtoken);
     res.status(201).json({
         message: "Welcome",
         authtoken

@@ -22,10 +22,12 @@ const getUser = (req, res, next) => __awaiter(void 0, void 0, void 0, function* 
     }
     const userId = req.headers["userId"];
     //Get user info
-    const user = yield User_1.default.findById(userId).select('-password');
-    if (!user) {
-        return next(new HttpError_1.default('User not found', 404));
-    }
+    const user = yield User_1.default.findById(userId).select('-password').then(() => {
+        console.log(userId);
+    });
+    // if (!user) {
+    //   return next(new HttpError('User not found', 404));
+    // }
     res.status(200).json({
         message: "user details fetched",
         user

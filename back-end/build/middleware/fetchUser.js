@@ -12,13 +12,24 @@ dotenv_1.default.config();
 const fetchUser = (req, res, next) => {
     // Get the user from the token and add ID to the request object
     const token = req.header('auth-token');
+    console.log(token);
     if (!token) {
         return next(new HttpError_1.default('Please authenticate using a valid token', 401));
     }
     try {
-        const data = jsonwebtoken_1.default.verify(token, process.env.JWT_KEY);
-        req.headers["userId"] = data.user;
-        next();
+        jsonwebtoken_1.default.verify(token, process.env.JWT_KEY, (err, payload) => {
+            if (err) {
+                return next(new HttpError_1.default('Please authenticate using a valid token', 401));
+            }
+            if (!payload) {
+                return next(new HttpError_1.default('Please authenticate using a valid token', 401));
+            }
+            if (typeof payload === 'string') {
+                return next(new HttpError_1.default('Please authenticate using a valid token', 401));
+            }
+            req.headers["userId"] = payload.id;
+            next();
+        });
     }
     catch (error) {
         return next(new HttpError_1.default('Please authenticate using a valid token', 401));

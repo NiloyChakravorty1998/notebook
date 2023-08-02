@@ -38,12 +38,7 @@ const loginUser = (req, res, next) => __awaiter(void 0, void 0, void 0, function
         return next(new HttpError_1.default('Invalid email / password', 400));
     }
     // send jwt token to the user after they have signed up
-    const data = {
-        user: {
-            id: user.id
-        }
-    };
-    const authtoken = jsonwebtoken_1.default.sign(data, process.env.JWT_KEY);
+    const authtoken = jsonwebtoken_1.default.sign({ id: user.id }, process.env.JWT_KEY);
     res.status(200).json({
         message: "You have logged in",
         authtoken
