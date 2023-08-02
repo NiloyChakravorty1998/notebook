@@ -43,13 +43,8 @@ export const createUser = async (req :Request, res : Response, next : NextFuncti
   }
 
   //send jwt token to user after they have signed up
-  const data = {
-    user: {
-      id: newUser.id
-    }
-  };
-  const authtoken = jwt.sign(data, process.env.JWT_KEY!);
-
+  const authtoken = jwt.sign({id: newUser.id}, process.env.JWT_KEY!);
+  console.log(authtoken);
   res.status(201).json({
     message: "Welcome",
     authtoken

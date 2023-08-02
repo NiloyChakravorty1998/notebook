@@ -10,11 +10,13 @@ export const getUser = async (req : Request, res : Response, next : NextFunction
   const userId = req.headers["userId"];
 
   //Get user info
-  const user = await User.findById(userId).select('-password');
+  const user = await User.findById(userId).select('-password').then(() =>{
+    console.log(userId);
+  });
 
-  if (!user) {
-    return next(new HttpError('User not found', 404));
-  }
+  // if (!user) {
+  //   return next(new HttpError('User not found', 404));
+  // }
 
   res.status(200).json({
     message: "user details fetched",

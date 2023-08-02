@@ -32,12 +32,7 @@ export const loginUser = async (req : Request, res : Response, next : NextFuncti
   }
 
   // send jwt token to the user after they have signed up
-  const data = {
-    user: {
-      id: user.id
-    }
-  };
-  const authtoken = jwt.sign(data, process.env.JWT_KEY!);
+  const authtoken = jwt.sign({id : user.id}, process.env.JWT_KEY!);
 
   res.status(200).json({
     message: "You have logged in",
